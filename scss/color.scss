@@ -40,7 +40,12 @@ $base_color:(
 // 主题色生成代码
 @each $key, $color in $base_color {
     .color-#{$key}{
-        background-color:$color
+        background-color:$color;
+        @if lightness($color) > 50% { 
+            color: #333 
+        }@else{
+            color: #FFF 
+        }
     }
     @for $i from 1 to 5 {
         .color-#{$key}-#{$i * 100} {
@@ -64,6 +69,7 @@ $base_color:(
     }
 }
 
+// 字体颜色生成
 @each $key, $color in $base_color {
     .text-#{$key}{
         color:$color !important;
@@ -77,5 +83,19 @@ $base_color:(
         .text-#{$key}-#{$i * 100} {
             color: darken($color,($i - 5) * 5%) !important;;
         }
+    }
+}
+
+//渐变色背景生成
+//按钮
+@each $key, $color in $base_color {
+    .btn-gradient-#{$key}-light{
+        background:-webkit-linear-gradient(left top,lighten($color,5 * 5%), darken($color,0 * 5%));
+    }
+    .btn-gradient-#{$key}{
+        background:-webkit-linear-gradient(left top,lighten($color,3 * 5%), darken($color,2 * 5%));
+    }
+    .btn-gradient-#{$key}-darken{
+        background:-webkit-linear-gradient(left top,lighten($color,0 * 5%), darken($color,5 * 5%));
     }
 }
