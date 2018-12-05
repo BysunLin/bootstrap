@@ -13,9 +13,9 @@ $black:    #000 !default;
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
+$pink:    #E91E63 !default;
+$red:     #F44336 !default;
+$orange:  #FF5722 !default;
 $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
@@ -71,16 +71,16 @@ $base_color:(
 
 // 字体颜色生成
 @each $key, $color in $base_color {
-    .text-#{$key}{
+    .text-color-#{$key}{
         color:$color !important;
     }
     @for $i from 1 to 5 {
-        .text-#{$key}-#{$i * 100} {
+        .text-color-#{$key}-#{$i * 100} {
             color: lighten($color,(5-$i) * 5%) !important;;
         }
     }
     @for $i from 5 to 10 {
-        .text-#{$key}-#{$i * 100} {
+        .text-color-#{$key}-#{$i * 100} {
             color: darken($color,($i - 5) * 5%) !important;;
         }
     }
@@ -91,11 +91,79 @@ $base_color:(
 @each $key, $color in $base_color {
     .btn-gradient-#{$key}-light{
         background:-webkit-linear-gradient(left top,lighten($color,5 * 5%), darken($color,0 * 5%));
+        box-shadow: 2px 1px 5px #999999;
+        transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
     .btn-gradient-#{$key}{
         background:-webkit-linear-gradient(left top,lighten($color,3 * 5%), darken($color,2 * 5%));
+        box-shadow: 2px 1px 5px #999999;
+        transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
     .btn-gradient-#{$key}-darken{
         background:-webkit-linear-gradient(left top,lighten($color,0 * 5%), darken($color,5 * 5%));
+        box-shadow: 2px 1px 5px #999999;
+        transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .btn-gradient-#{$key}:hover,.btn-gradient-#{$key}-light:hover,.btn-gradient-#{$key}-darken:hover{
+        box-shadow: 2px 1px 10px #666666;
+    }
+    .btn-gradient-#{$key}-light:focus{
+        background:darken($color,0 * 5%);
+        box-shadow: 2px 1px 10px #666666;
+    }
+    .btn-gradient-#{$key}:focus{
+        background:darken($color,2 * 5%);
+        box-shadow: 2px 1px 10px #666666;
+    }
+    .btn-gradient-#{$key}-darken:focus{
+        background:darken($color,4 * 5%);
+        box-shadow: 2px 1px 10px #666666;
     }
 }
+
+//渐变色背景
+@each $key, $color in $base_color {
+    .bg-gradient-#{$key}-light{
+        background:-webkit-linear-gradient(left top,lighten($color,5 * 5%), darken($color,0 * 5%));
+    }
+    .bg-gradient-#{$key}-light-top{
+        background:-webkit-linear-gradient(top,lighten($color,5 * 5%), darken($color,0 * 5%));
+    }
+    .bg-gradient-#{$key}{
+        background:-webkit-linear-gradient(left top,lighten($color,3 * 5%), darken($color,2 * 5%));
+    }
+    .bg-gradient-#{$key}-top{
+        background:-webkit-linear-gradient(top,lighten($color,3 * 5%), darken($color,2 * 5%));
+    }
+    .bg-gradient-#{$key}-darken{
+        background:-webkit-linear-gradient(left top,lighten($color,0 * 5%), darken($color,5 * 5%));
+    }
+    .bg-gradient-#{$key}-darken-top{
+        background:-webkit-linear-gradient(top,lighten($color,0 * 5%), darken($color,5 * 5%));
+    }
+}
+
+//主题色配置
+.text-color-theme{
+    color: rgba($color: #000000, $alpha: 0.87)
+}
+.text-color-theme-secondary{
+    color: rgba($color: #000000, $alpha: 0.54)
+}
+.text-color-theme-disabled{
+    color: rgba($color: #000000, $alpha: 0.38)
+}
+
+.theme-dark{
+    background-color: #212121;
+    .text-color-theme{
+        color: rgba($color: #ffffff, $alpha: 1)
+    }
+    .text-color-theme-secondary{
+        color: rgba($color: #ffffff, $alpha: 0.70)
+    }
+    .text-color-theme-disabled{
+        color: rgba($color: #ffffff, $alpha: 0.50)
+    }
+}
+
