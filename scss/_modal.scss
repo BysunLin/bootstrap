@@ -95,6 +95,16 @@
   &.show { opacity: $modal-backdrop-opacity; }
 }
 
+.modal-mengceng {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: $zindex-modal-backdrop;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+}
+
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {

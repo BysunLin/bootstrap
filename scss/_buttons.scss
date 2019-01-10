@@ -102,6 +102,38 @@ fieldset:disabled a.btn {
   // No need for an active state here
 }
 
+// btn-push样式
+.btn-push {
+  font-weight: $font-weight-normal;
+  border-bottom: 3px solid rgba($color: #000000, $alpha: 0.15);
+  transition: all 0.2s;
+
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+  @include hover {
+    text-decoration: none;
+  }
+  &:focus,
+  &.focus {
+    box-shadow: none;
+    outline: 0;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    &:focus {
+      box-shadow: none;
+    }
+    border-bottom: 3px solid transparent;
+    transform: translateY(2px);
+  }
+  // No need for an active state here
+}
 
 //
 // Button Sizes

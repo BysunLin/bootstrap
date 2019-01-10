@@ -83,7 +83,8 @@
     "watch-css-docs": "nodemon --watch \"site/docs/**/assets/scss/\" --ext scss --exec \"npm run css-docs\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm run js-compile\"",
     "watch-js-docs": "nodemon --watch \"site/docs/**/assets/js/src/\" --ext js --exec \"npm run js-docs\"",
-    "color":"node-sass ./scss/color.scss -o ./dist"
+    "color":"node-sass ./scss/color.scss -o ./dist",
+    "create":"node-sass ./scss/bootstrap.scss -o ./dist"
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
